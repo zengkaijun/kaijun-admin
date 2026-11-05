@@ -6,8 +6,9 @@
 
 ## 技术栈
 
-- 编排：Docker Compose（Docker Desktop）
-- 后端：PHP 8.4 + Laravel（API）
+- 编排：Docker Desktop + Compose（db / app / web）
+- 后端：PHP 8.4 + Laravel 12 API
+- 应用服务器：**Laravel Octane + Swoole**（`octane:start --server=swoole`；失败降级 `artisan serve` 仅限排障）
 - 数据库：MySQL 9（镜像不可用时 `mysql:lts`）
 - 前端：Vite + React + Ant Design，经 Vite 代理访问 `/api`
 - 本地开发只绑定 127.0.0.1；代码经 GitHub 多机同步
@@ -15,10 +16,12 @@
 ## 常用命令
 
 ```bash
-docker compose up -d
+docker compose up -d --build
+docker compose exec app composer install
 docker compose exec app php artisan migrate
 docker compose exec app php artisan db:seed
-# 前端在容器 web 内 npm run dev（见 README）
+docker compose logs app          # 确认 Octane/Swoole 已启动
+# 前端：容器 web 内 npm run dev（见 README）
 ```
 
 ## 目录结构
