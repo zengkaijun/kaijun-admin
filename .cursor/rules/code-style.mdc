@@ -1,0 +1,9 @@
+---
+description: 源码通用风格
+globs: ["src/**"]
+alwaysApply: false
+---
+- 命名清晰优先于简短；不写解释"代码在干什么"的注释，只写"为什么"
+- 不留 console.log / print 调试残渣
+- 不做"以防万一"的抽象：三处相似优于过早抽象
+- 错误不吞：catch 里必须处理或向上抛，不允许空 catch
