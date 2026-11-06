@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+
+<html class=\"h-full bg-background\" lang=\"zh-CN\"><head>
+<meta charset=\"utf-8\"/>
+<meta content=\"width=device-width, initial-scale=1.0\" name=\"viewport\"/>
+<title>凯俊后台 - 项目管理</title>
+<!-- Material Symbols Outlined -->
+<link href=\"https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap\" rel=\"stylesheet\"/>
+<link href=\"https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap\" rel=\"stylesheet\"/>
+<link href=\"https://fonts.googleapis.com/css2?family=Inter,+-apple-system,+BlinkMacSystemFont,+'PingFang+SC',+'Microsoft+YaHei',+sans-serif:wght@100..900&display=swap\" rel=\"stylesheet\"/>
+<!-- Tailwind CSS CDN -->
+<script src=\"https://cdn.tailwindcss.com?plugins=forms,container-queries\"></script>
+<script id=\"tailwind-config\">
+    tailwind.config = {
+      darkMode: \"class\",
+      theme: {
+        extend: {
+          \"colors\": {
+            \"on-primary\": \"#ffffff\",
+            \"error\": \"#ba1a1a\",
+            \"tertiary\": \"#46566c\",
+            \"tertiary-fixed-dim\": \"#b7c8e1\",
+            \"on-primary-fixed\": \"#00174b\",
+            \"on-error\": \"#ffffff\",
+            \"primary\": \"#004ac6\",
+            \"on-secondary-fixed-variant\": \"#004c6e\",
+            \"surface-container-low\": \"#f2f4f6\",
+            \"surface-bright\": \"#f7f9fb\",
+            \"on-tertiary-fixed-variant\": \"#38485d\",
+            \"on-error-container\": \"#93000a\",
+            \"surface-tint\": \"#0053db\",
+            \"outline\": \"#737686\",
+            \"on-background\": \"#191c1e\",
+            \"tertiary-fixed\": \"#d3e4fe\",
+            \"secondary-fixed\": \"#c9e6ff\",
+            \"inverse-on-surface\": \"#eff1f3\",
+            \"surface-container-high\": \"#e6e8ea\",
+            \"secondary\": \"#006591\",
+            \"tertiary-container\": \"#5e6e85\",
+            \"surface-container-highest\": \"#e0e3e5\",
+            \"surface\": \"#f7f9fb\",
+            \"primary-container\": \"#2563eb\",
+            \"secondary-fixed-dim\": \"#89ceff\",
+            \"on-secondary-container\": \"#004666\",
+            \"on-secondary-fixed\": \"#001e2f\",
+            \"surface-container-lowest\": \"#ffffff\",
+            \"on-secondary\": \"#ffffff\",
+            \"surface-dim\": \"#d8dadc\",
+            \"secondary-container\": \"#39b8fd\",
+            \"on-primary-fixed-variant\": \"#003ea8\",
+            \"on-primary-container\": \"#eeefff\",
+            \"on-surface-variant\": \"#434655\",
+            \"on-tertiary\": \"#ffffff\",
+            \"surface-variant\": \"#e0e3e5\",
+            \"on-surface\": \"#191c1e\",
+            \"inverse-primary\": \"#b4c5ff\",
+            \"background\": \"#f7f9fb\",
+            \"on-tertiary-container\": \"#e9f0ff\",
+            \"inverse-surface\": \"#2d3133\",
+            \"primary-fixed\": \"#dbe1ff\",
+            \"on-tertiary-fixed\": \"#0b1c30\",
+            \"surface-container\": \"#eceef0\",
+            \"primary-fixed-dim\": \"#b4c5ff\",
+            \"outline-variant\": \"#c3c6d7\",
+            \"error-container\": \"#ffdad6\"
+          },
+          \"borderRadius\": {
+            \"DEFAULT\": \"0.125rem\",
+            \"lg\": \"0.25rem\",
+            \"xl\": \"0.5rem\",
+            \"full\": \"0.75rem\"
+          },
+          \"spacing\": {
+            \"margin-compact\": \"1rem\",
+            \"gutter-compact\": \"0.75rem\",
+            \"gutter\": \"1rem\",
+            \"space-md\": \"0.75rem\",
+            \"space-xs\": \"0.25rem\",
+            \"space-sm\": \"0.5rem\",
+            \"margin\": \"1.5rem\",
+            \"space-xl\": \"2rem\",
+            \"space-lg\": \"1.25rem\"
+          },
+          \"fontFamily\": {
+            \"headline-lg\": [\"Inter, -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif\"],
+            \"label-sm\": [\"Inter, -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif\"],
+            \"body-sm\": [\"Inter, -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif\"],
+            \"label-md\": [\"Inter, -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif\"],
+            \"headline-sm\": [\"Inter, -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif\"],
+            \"body-md\": [\"Inter, -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif\"],
+            \"headline-xl\": [\"Inter, -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif\"],
+            \"caption\": [\"Inter, -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif\"],
+            \"body-lg\": [\"Inter, -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif\"],
+            \"headline-md\": [\"Inter, -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif\"]
+          },
+          \"fontSize\": {
+            \"headline-lg\": [\"22px\", { \"lineHeight\": \"30px\", \"fontWeight\": \"600\" }],
+            \"label-sm\": [\"12px\", { \"lineHeight\": \"16px\", \"fontWeight\": \"500\" }],
+            \"body-sm\": [\"13px\", { \"lineHeight\": \"18px\", \"fontWeight\": \"400\" }],
+            \"label-md\": [\"13px\", { \"lineHeight\": \"18px\", \"fontWeight\": \"500\" }],
+            \"headline-sm\": [\"16px\", { \"lineHeight\": \"24px\", \"fontWeight\": \"600\" }],
+            \"body-md\": [\"14px\", { \"lineHeight\": \"22px\", \"fontWeight\": \"400\" }],
+            \"headline-xl\": [\"28px\", { \"lineHeight\": \"36px\", \"fontWeight\": \"600\" }],
+            \"caption\": [\"11px\", { \"lineHeight\": \"14px\", \"fontWeight\": \"400\" }],
+            \"body-lg\": [\"16px\", { \"lineHeight\": \"24px\", \"fontWeight\": \"400\" }],
+            \"headline-md\": [\"18px\", { \"lineHeight\": \"26px\", \"fontWeight\": \"600\" }]
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class=\"h-full bg-background font-body-md text-on-surface antialiased overflow-x-hidden\">
+<!-- ==================== SideNavBar ==================== -->
+<aside class=\"fixed top-0 left-0 h-screen w-60 z-30 bg-surface-container-lowest border-r border-outline-variant shadow-sm flex flex-col justify-between p-4 transition-all duration-150 ease-in-out\">
+<!-- Brand Header -->
+<div>
+<div class=\"flex items-center gap-3 px-2 py-2 mb-6\">
+<div class=\"w-9 h-9 rounded-xl bg-primary flex items-center justify-center text-on-primary shadow-sm flex-shrink-0\">
+<span class=\"material-symbols-outlined text-[20px]\" data-icon=\"corporate_fare\">corporate_fare</span>
+</div>
+<div class=\"flex flex-col min-w-0\">
+<span class=\"text-headline-md font-headline-md font-bold text-on-surface truncate\">凯俊后台</span>
+<span class=\"text-caption font-caption text-on-surface-variant truncate\">企业管理协同系统</span>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class=\"space-y-1\">
+<!-- 1. 总览 (Inactive) -->
+<a class=\"flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant font-normal hover:bg-surface-container-high hover:text-on-surface transition-colors\" href=\"#\">
+<span class=\"material-symbols-outlined text-[20px]\" data-icon=\"dashboard\">dashboard</span>
+<span class=\"text-label-md font-label-md\">总览</span>
+</a>
+<!-- 2. 项目 (Active - matched by page intent) -->
+<a class=\"flex items-center gap-3 px-3 py-2 rounded-lg bg-surface-container-low text-primary font-medium hover:bg-surface-container-high transition-colors\" href=\"#\">
+<span class=\"material-symbols-outlined text-[20px] text-primary\" data-icon=\"folder\" data-weight=\"fill\" style=\"font-variation-settings: 'FILL' 1;\">folder</span>
+<span class=\"text-label-md font-label-md\">项目</span>
+<span class=\"ml-auto text-caption font-caption px-1.5 py-0.5 rounded-full bg-primary-fixed text-primary font-semibold\">28</span>
+</a>
+<!-- 3. 任务 (Inactive) -->
+<a class=\"flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant font-normal hover:bg-surface-container-high hover:text-on-surface transition-colors\" href=\"#\">
+<span class=\"material-symbols-outlined text-[20px]\" data-icon=\"check_circle\">check_circle</span>
+<span class=\"text-label-md font-label-md\">任务</span>
+</a>
+<!-- 4. 工时 (Inactive) -->
+<a class=\"flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant font-normal hover:bg-surface-container-high hover:text-on-surface transition-colors\" href=\"#\">
+<span class=\"material-symbols-outlined text-[20px]\" data-icon=\"schedule\">schedule</span>
+<span class=\"text-label-md font-label-md\">工时</span>
+</a>
+<!-- 5. 调研 (Inactive) -->
+<a class=\"flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant font-normal hover:bg-surface-container-high hover:text-on-surface transition-colors\" href=\"#\">
+<span class=\"material-symbols-outlined text-[20px]\" data-icon=\"poll\">poll</span>
+<span class=\"text-label-md font-label-md\">调研</span>
+</a>
+<!-- 6. 话术 (Inactive) -->
+<a class=\"flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant font-normal hover:bg-surface-container-high hover:text-on-surface transition-colors\" href=\"#\">
+<span class=\"material-symbols-outlined text-[20px]\" data-icon=\"chat\">chat</span>
+<span class=\"text-label-md font-label-md\">话术</span>
+</a>
+<!-- 7. 设置 (Inactive) -->
+<a class=\"flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant font-normal hover:bg-surface-container-high hover:text-on-surface transition-colors\" href=\"#\">
+<span class=\"material-symbols-outlined text-[20px]\" data-icon=\"settings\">settings</span>
+<span class=\"text-label-md font-label-md\">设置</span>
+</a>
+</nav>
+</div>
+<!-- Sidebar Footer -->
+<div class=\"border-t border-outline-variant pt-3 space-y-2\">
+<!-- 帮助中心 -->
+<a class=\"flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant font-normal hover:bg-surface-container-high hover:text-on-surface transition-colors\" href=\"#\">
+<span class=\"material-symbols-outlined text-[20px]\" data-icon=\"help\">help</span>
+<span class=\"text-label-md font-label-md\">帮助中心</span>
+</a>
+<!-- 登录用户卡片 -->
+<div class=\"flex items-center justify-between px-2.5 py-2 rounded-xl bg-surface-bright border border-outline-variant\">
+<div class=\"flex items-center gap-2.5 min-w-0\">
+<img class=\"w-8 h-8 rounded-full object-cover flex-shrink-0 border border-outline-variant\" data-alt=\"Professional headshot of a smart Asian male corporate administrator wearing navy blazer in modern office space, soft studio light, clean background\" src=\"https://lh3.googleusercontent.com/aida-public/AB6AXuB2g8Pv2w65Zm4NeIa2WxkAdAm9IdU0rWgIgzaFhIG0yBlrSNqzx1YBhocgzSTwzfMgwHba1C_YkERBLpNVTCg3TFDM2cnD4QEoPS8TaD9bgI-vybQB-FSGOSRQGOcbfX1ZEC88JMriZqfSyjpP02XCwevePZGDCm4pkKCakaEDLspNSBdf-hX9NNJQpM5mzEODU4BFRQd28cVUbAxx9VYRsMlbnCT-4oG-g5BbLqvS_AeSTExs8XOqfvuw2pIKucjDuo413sUWU4ks\"/>
+<div class=\"flex flex-col min-w-0\">
+<span class=\"text-label-md font-label-md text-on-surface truncate\">周凯</span>
+<span class=\"text-caption font-caption text-on-surface-variant truncate\">系统管理员</span>
+</div>
+</div>
+<button class=\"p-1 rounded text-on-surface-variant hover:text-error hover:bg-error-container transition-colors\" title=\"退出登录\">
+<span class=\"material-symbols-outlined text-[18px]\" data-icon=\"logout\">logout</span>
+</button>
+</div>
+</div>
+</aside>
+<!-- ==================== TopNavBar ==================== -->
+<header class=\"sticky top-0 right-0 z-20 h-14 w-full pl-60 bg-surface-container-lowest border-b border-outline-variant shadow-sm transition-all duration-150 ease-in-out\">
+<div class=\"flex items-center justify-between px-6 h-full w-full\">
+<!-- Left: Breadcrumb -->
+<nav aria-label=\"Breadcrumb\" class=\"flex items-center gap-2 text-label-md font-label-md\">
+<span class=\"text-on-surface-variant\">凯俊协同</span>
+<span class=\"text-outline-variant\">/</span>
+<span class=\"text-on-surface font-semibold\">项目管理</span>
+</nav>
+<!-- Right: Action clusters -->
+<div class=\"flex items-center gap-3\">
+<!-- Quick search launcher (compact) -->
+<div class=\"relative hidden lg:block\">
+<span class=\"material-symbols-outlined absolute left-2.5 top-2 text-[18px] text-on-surface-variant\" data-icon=\"search\">search</span>
+<input class=\"h-8 pl-8 pr-3 w-48 text-body-sm font-body-sm rounded-lg border border-outline-variant bg-surface focus:outline-none focus:border-primary-container focus:bg-surface-container-lowest text-on-surface\" placeholder=\"全域快捷检索...\" type=\"text\"/>
+</div>
+<!-- Documentation button -->
+<a class=\"h-8 px-2.5 py-1 inline-flex items-center gap-1.5 text-label-md font-label-md text-on-surface-variant hover:text-primary hover:bg-surface-container-low rounded-lg transition-colors\" href=\"#\">
+<span class=\"material-symbols-outlined text-[18px]\" data-icon=\"help_outline\">help_outline</span>
+<span>文档中心</span>
+</a>
+<!-- Notification Bell with Dot -->
+<button class=\"relative p-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors\" title=\"系统通知\">
+<span class=\"material-symbols-outlined text-[20px]\" data-icon=\"notifications\">notifications</span>
+<span class=\"absolute top-1 right-1 w-2 h-2 rounded-full bg-error ring-2 ring-surface-container-lowest\"></span>
+</button>
+<div class=\"h-4 w-px bg-outline-variant mx-1\"></div>
+<!-- Trailing Primary Action from Spec -->
+<button class=\"h-8 px-3 inline-flex items-center gap-1 bg-primary text-on-primary rounded-lg text-label-md font-label-md hover:bg-surface-tint active:bg-on-primary-fixed-variant transition-colors shadow-sm\">
+<span class=\"material-symbols-outlined text-[18px]\" data-icon=\"add\">add</span>
+<span>新建任务</span>
+</button>
+<!-- Small User Avatar -->
+<img class=\"w-7 h-7 rounded-full object-cover border border-outline-variant ml-1\" data-alt=\"Subtle rounded administrator profile icon portrait with neutral lighting, professional corporate avatar\" src=\"https://lh3.googleusercontent.com/aida-public/AB6AXuDEXRqweTrhWUv3q8xMrpsXbT7HE_VXnLB4Okd7npZF4hb0t5Tik-MbM-PzbulU7UTmJ9x7syJQIZeozWmXGeGp28irHWH7WJNfCa24n5UsyLaULpnSQRqypHGoKmjD6dZgUYsnUyvWGIpClTpfvxcshNpywGfyUnl9QyeDrEwiAMczEwZoUkLib54oemq-JbTm1niwl5FZK8_M9Ye8KCOahRKjMFjumz9lfDVYdQyTYtCvNQlCGgBWdBtraXtB5n0xjL4PB_o6fcZk\"/>
+</div>
+</div>
+</header>
+<!-- ==================== Main Workbench Canvas ==================== -->
+<main class=\"pl-60 min-h-[calc(100vh-3.5rem)] bg-background\">
+<div class=\"p-6 max-w-7xl mx-auto space-y-5\">
+<!-- Page Header Banner / Statistics -->
+<section class=\"flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-1\">
+<div>
+<div class=\"flex items-center gap-3\">
+<h1 class=\"text-headline-xl font-headline-xl text-on-surface\">项目</h1>
+<span class=\"inline-flex items-center px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-primary-fixed text-primary font-semibold\">协同交付中心</span>
+</div>
+<p class=\"text-body-md font-body-md text-on-surface-variant mt-1\">
+            共 <span class=\"font-semibold text-on-surface\">28</span> 个进行中项目，<span class=\"font-semibold text-error\">4</span> 项需本周重点跟进，阶段转化率良好。
+          </p>
+</div>
+<!-- Primary Actions Area -->
+<div class=\"flex items-center gap-2.5\">
+<button class=\"h-9 px-3.5 inline-flex items-center gap-1.5 bg-surface-container-lowest border border-outline-variant text-on-surface text-label-md font-label-md rounded-lg hover:bg-surface-container-low transition-colors shadow-sm\">
+<span class=\"material-symbols-outlined text-[18px] text-on-surface-variant\" data-icon=\"download\">download</span>
+<span>导出报表</span>
+</button>
+<button class=\"h-9 px-3.5 inline-flex items-center gap-1.5 bg-surface-container-lowest border border-outline-variant text-on-surface text-label-md font-label-md rounded-lg hover:bg-surface-container-low transition-colors shadow-sm\">
+<span class=\"material-symbols-outlined text-[18px] text-on-surface-variant\" data-icon=\"checklist\">checklist</span>
+<span>批量操作</span>
+</button>
+<button class=\"h-9 px-4 inline-flex items-center gap-1.5 bg-primary-container text-on-primary text-label-md font-label-md rounded-lg hover:bg-primary transition-colors shadow-sm focus:ring-2 focus:ring-secondary-fixed\">
+<span class=\"material-symbols-outlined text-[18px]\" data-icon=\"add\">add</span>
+<span>新建项目</span>
+</button>
+</div>
+</section>
+<!-- Filter & Search Toolbar (Bento Panel) -->
+<div class=\"bg-surface-container-lowest border border-outline-variant rounded-xl p-4 shadow-sm\">
+<div class=\"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-3 items-center\">
+<!-- Search input (Span 4) -->
+<div class=\"lg:col-span-4 relative\">
+<span class=\"material-symbols-outlined absolute left-3 top-2.5 text-[18px] text-on-surface-variant\" data-icon=\"search\">search</span>
+<input class=\"w-full h-9 pl-9 pr-3 rounded-lg border border-outline-variant bg-surface-container-lowest text-body-sm font-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:border-primary-container focus:ring-2 focus:ring-primary-fixed\" placeholder=\"搜索项目名称、客户或负责人...\" type=\"text\"/>
+</div>
+<!-- Status Select (Span 2) -->
+<div class=\"lg:col-span-2\">
+<div class=\"relative\">
+<select class=\"w-full h-9 pl-3 pr-8 rounded-lg border border-outline-variant bg-surface-container-lowest text-body-sm font-body-sm text-on-surface focus:outline-none focus:border-primary-container appearance-none cursor-pointer\">
+<option value=\"\">全部状态</option>
+<option value=\"wait_reply\">待客户回复</option>
+<option value=\"following\">跟进中</option>
+<option value=\"wait_material\">待补材料</option>
+<option value=\"contract_review\">法务合同初审中</option>
+</select>
+<span class=\"material-symbols-outlined absolute right-2.5 top-2.5 text-[18px] text-on-surface-variant pointer-events-none\" data-icon=\"expand_more\">expand_more</span>
+</div>
+</div>
+<!-- Stage Select (Span 2) -->
+<div class=\"lg:col-span-2\">
+<div class=\"relative\">
+<select class=\"w-full h-9 pl-3 pr-8 rounded-lg border border-outline-variant bg-surface-container-lowest text-body-sm font-body-sm text-on-surface focus:outline-none focus:border-primary-container appearance-none cursor-pointer\">
+<option value=\"\">全部阶段</option>
+<option value=\"intent\">意向阶段</option>
+<option value=\"requirement\">需求沟通</option>
+<option value=\"quote\">方案报价</option>
+<option value=\"negotiate\">商务谈判</option>
+</select>
+<span class=\"material-symbols-outlined absolute right-2.5 top-2.5 text-[18px] text-on-surface-variant pointer-events-none\" data-icon=\"expand_more\">expand_more</span>
+</div>
+</div>
+<!-- Won/Loss Select (Span 2) -->
+<div class=\"lg:col-span-2\">
+<div class=\"relative\">
+<select class=\"w-full h-9 pl-3 pr-8 rounded-lg border border-outline-variant bg-surface-container-lowest text-body-sm font-body-sm text-on-surface focus:outline-none focus:border-primary-container appearance-none cursor-pointer\">
+<option value=\"\">成交状态</option>
+<option value=\"won\">已成交</option>
+<option value=\"lost\">未成交</option>
+<option value=\"pending\">跟进中</option>
+</select>
+<span class=\"material-symbols-outlined absolute right-2.5 top-2.5 text-[18px] text-on-surface-variant pointer-events-none\" data-icon=\"expand_more\">expand_more</span>
+</div>
+</div>
+<!-- Filter Confirmation & Reset (Span 2) -->
+<div class=\"lg:col-span-2 flex items-center justify-end gap-2\">
+<button class=\"h-9 px-3 text-label-md font-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded-lg transition-colors\">
+              重置
+            </button>
+<button class=\"h-9 px-3.5 bg-primary text-on-primary text-label-md font-label-md rounded-lg hover:bg-surface-tint transition-colors shadow-sm\">
+              查询
+            </button>
+</div>
+</div>
+<!-- Filter Sub-bar: Quick Tag toggles -->
+<div class=\"mt-3 pt-3 border-t border-outline-variant flex flex-wrap items-center justify-between gap-2 text-label-sm font-label-sm\">
+<div class=\"flex items-center gap-3\">
+<span class=\"text-on-surface-variant\">快速过滤:</span>
+<!-- Toggle: 今日待跟进 (Active style) -->
+<label class=\"inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary-fixed border border-primary text-primary cursor-pointer hover:bg-primary-container hover:text-on-primary transition-colors\">
+<input checked=\"\" class=\"rounded w-3.5 h-3.5 text-primary focus:ring-0 focus:ring-offset-0 border-outline\" type=\"checkbox\"/>
+<span class=\"font-medium\">今日待跟进 (4)</span>
+</label>
+<!-- Toggle: 重点高额项目 -->
+<label class=\"inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-low border border-outline-variant text-on-surface-variant cursor-pointer hover:bg-surface-container-high transition-colors\">
+<input class=\"rounded w-3.5 h-3.5 text-primary focus:ring-0 focus:ring-offset-0 border-outline\" type=\"checkbox\"/>
+<span>预估 > ¥20万</span>
+</label>
+<!-- Toggle: 近7天超期 -->
+<label class=\"inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-low border border-outline-variant text-on-surface-variant cursor-pointer hover:bg-surface-container-high transition-colors\">
+<input class=\"rounded w-3.5 h-3.5 text-primary focus:ring-0 focus:ring-offset-0 border-outline\" type=\"checkbox\"/>
+<span>超期滞留 (2)</span>
+</label>
+</div>
+<div class=\"text-caption font-caption text-on-surface-variant\">
+            已应用 <span class=\"font-semibold text-primary\">1</span> 个快捷过滤规则
+          </div>
+</div>
+</div>
+<!-- Main Data Table Card -->
+<div class=\"bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm overflow-hidden\">
+<div class=\"overflow-x-auto\">
+<table class=\"w-full text-left border-collapse\">
+<!-- Table Header -->
+<thead>
+<tr class=\"bg-surface-container-low border-b border-outline-variant text-label-sm font-label-sm text-on-surface-variant\">
+<th class=\"py-3 px-4 w-12 text-center\">
+<input class=\"rounded w-4 h-4 text-primary border-outline focus:ring-0 focus:ring-offset-0\" type=\"checkbox\"/>
+</th>
+<th class=\"py-3 px-4 font-medium\">项目名称</th>
+<th class=\"py-3 px-4 font-medium\">客户公司 / 联系人</th>
+<th class=\"py-3 px-4 font-medium\">阶段</th>
+<th class=\"py-3 px-4 font-medium\">是否成交</th>
+<th class=\"py-3 px-4 font-medium\">当前状态</th>
+<th class=\"py-3 px-4 font-medium\">下次跟进日</th>
+<th class=\"py-3 px-4 text-right font-medium\">预计金额</th>
+<th class=\"py-3 px-4 text-center font-medium w-36\">操作</th>
+</tr>
+</thead>
+<!-- Table Body -->
+<tbody class=\"divide-y divide-outline-variant text-body-sm font-body-sm\">
+<!-- Row 1: 星河CRM二期升级 -->
+<tr class=\"hover:bg-surface-container-low transition-colors group\">
+<td class=\"py-3.5 px-4 text-center\">
+<input class=\"rounded w-4 h-4 text-primary border-outline focus:ring-0\" type=\"checkbox\"/>
+</td>
+<td class=\"py-3.5 px-4 font-medium text-on-surface\">
+<div class=\"flex items-center gap-2\">
+<span class=\"w-2 h-2 rounded-full bg-primary-container flex-shrink-0\"></span>
+<a class=\"hover:text-primary transition-colors hover:underline\" href=\"#\">星河CRM二期升级</a>
+</div>
+<span class=\"text-caption font-caption text-on-surface-variant block pl-4\">PRJ-2025-089</span>
+</td>
+<td class=\"py-3.5 px-4 text-on-surface\">
+<div class=\"font-medium\">星河科技</div>
+<div class=\"text-caption font-caption text-on-surface-variant\">李工 (研发负责人)</div>
+</td>
+<td class=\"py-3.5 px-4\">
+<!-- 方案报价 (浅蓝 Chip) -->
+<span class=\"inline-flex items-center px-2 py-0.5 rounded text-caption font-medium bg-secondary-fixed text-on-secondary-fixed-variant\">
+                    方案报价
+                  </span>
+</td>
+<td class=\"py-3.5 px-4\">
+<!-- 跟进中 (浅黄/中性 Chip) -->
+<span class=\"inline-flex items-center px-2 py-0.5 rounded text-caption font-medium bg-[#fef3c7] text-[#92400e]\">
+                    跟进中
+                  </span>
+</td>
+<td class=\"py-3.5 px-4\">
+<!-- 待客户回复 (黄色/橙色 Chip 带圆点) -->
+<span class=\"inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-caption font-medium bg-[#fffbeb] text-[#b45309] border border-[#fde68a]\">
+<span class=\"w-1.5 h-1.5 rounded-full bg-[#f59e0b]\"></span>
+                    待客户回复
+                  </span>
+</td>
+<td class=\"py-3.5 px-4\">
+<div class=\"inline-flex items-center gap-1 text-primary font-medium\">
+<span class=\"material-symbols-outlined text-[16px]\" data-icon=\"event\">event</span>
+<span>2025-06-12</span>
+<span class=\"px-1 rounded text-caption bg-primary-fixed text-primary font-bold\">今日</span>
+</div>
+</td>
+<td class=\"py-3.5 px-4 text-right font-semibold text-on-surface font-mono\">
+                  ¥128,000
+                </td>
+<td class=\"py-3.5 px-4 text-center\">
+<div class=\"inline-flex items-center justify-center gap-1 text-label-sm font-label-sm\">
+<button class=\"px-2 py-1 text-primary hover:bg-surface-container-high rounded transition-colors font-medium\">跟进</button>
+<button class=\"px-2 py-1 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high rounded transition-colors\">详情</button>
+<button class=\"p-1 text-on-surface-variant hover:text-on-surface rounded\" title=\"更多\">
+<span class=\"material-symbols-outlined text-[16px]\" data-icon=\"more_horiz\">more_horiz</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2: 智汇云工业互联系统 -->
+<tr class=\"hover:bg-surface-container-low transition-colors group\">
+<td class=\"py-3.5 px-4 text-center\">
+<input class=\"rounded w-4 h-4 text-primary border-outline focus:ring-0\" type=\"checkbox\"/>
+</td>
+<td class=\"py-3.5 px-4 font-medium text-on-surface\">
+<div class=\"flex items-center gap-2\">
+<span class=\"w-2 h-2 rounded-full bg-error flex-shrink-0\"></span>
+<a class=\"hover:text-primary transition-colors hover:underline\" href=\"#\">智汇云工业互联系统</a>
+</div>
+<span class=\"text-caption font-caption text-on-surface-variant block pl-4\">PRJ-2025-067</span>
+</td>
+<td class=\"py-3.5 px-4 text-on-surface\">
+<div class=\"font-medium\">智汇互联</div>
+<div class=\"text-caption font-caption text-on-surface-variant\">赵总监 (生产部)</div>
+</td>
+<td class=\"py-3.5 px-4\">
+<!-- 需求沟通 (紫蓝 Chip) -->
+<span class=\"inline-flex items-center px-2 py-0.5 rounded text-caption font-medium bg-tertiary-fixed text-on-tertiary-fixed-variant\">
+                    需求沟通
+                  </span>
+</td>
+<td class=\"py-3.5 px-4\">
+<!-- 未成交 (灰色 Chip) -->
+<span class=\"inline-flex items-center px-2 py-0.5 rounded text-caption font-medium bg-surface-container-high text-on-surface-variant\">
+                    未成交
+                  </span>
+</td>
+<td class=\"py-3.5 px-4\">
+<!-- 待补技术白皮书 (红色/警示 Chip 带圆点) -->
+<span class=\"inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-caption font-medium bg-[#fef2f2] text-[#b91c1c] border border-[#fecaca]\">
+<span class=\"w-1.5 h-1.5 rounded-full bg-[#dc2626]\"></span>
+                    待补技术白皮书
+                  </span>
+</td>
+<td class=\"py-3.5 px-4\">
+<div class=\"inline-flex items-center gap-1 text-error font-medium\">
+<span class=\"material-symbols-outlined text-[16px]\" data-icon=\"warning\">warning</span>
+<span>2025-06-11</span>
+<span class=\"px-1 rounded text-caption bg-[#fee2e2] text-[#dc2626] font-medium\">逾期1天</span>
+</div>
+</td>
+<td class=\"py-3.5 px-4 text-right font-semibold text-on-surface font-mono\">
+                  ¥260,000
+                </td>
+<td class=\"py-3.5 px-4 text-center\">
+<div class=\"inline-flex items-center justify-center gap-1 text-label-sm font-label-sm\">
+<button class=\"px-2 py-1 text-primary hover:bg-surface-container-high rounded transition-colors font-medium\">跟进</button>
+<button class=\"px-2 py-1 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high rounded transition-colors\">详情</button>
+<button class=\"p-1 text-on-surface-variant hover:text-on-surface rounded\" title=\"更多\">
+<span class=\"material-symbols-outlined text-[16px]\" data-icon=\"more_horiz\">more_horiz</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3: 安泰智慧医疗挂号中台 -->
+<tr class=\"hover:bg-surface-container-low transition-colors group\">
+<td class=\"py-3.5 px-4 text-center\">
+<input class=\"rounded w-4 h-4 text-primary border-outline focus:ring-0\" type=\"checkbox\"/>
+</td>
+<td class=\"py-3.5 px-4 font-medium text-on-surface\">
+<div class=\"flex items-center gap-2\">
+<span class=\"w-2 h-2 rounded-full bg-[#16a34a] flex-shrink-0\"></span>
+<a class=\"hover:text-primary transition-colors hover:underline\" href=\"#\">安泰智慧医疗挂号中台</a>
+</div>
+<span class=\"text-caption font-caption text-on-surface-variant block pl-4\">PRJ-2025-052</span>
+</td>
+<td class=\"py-3.5 px-4 text-on-surface\">
+<div class=\"font-medium\">安泰医疗</div>
+<div class=\"text-caption font-caption text-on-surface-variant\">张经理 (信息中心)</div>
+</td>
+<td class=\"py-3.5 px-4\">
+<!-- 商务谈判 (靛蓝 Chip) -->
+<span class=\"inline-flex items-center px-2 py-0.5 rounded text-caption font-medium bg-[#e0e7ff] text-[#3730a3]\">
+                    商务谈判
+                  </span>
+</td>
+<td class=\"py-3.5 px-4\">
+<!-- 已成交 (浅绿高亮 Chip) -->
+<span class=\"inline-flex items-center px-2 py-0.5 rounded text-caption font-medium bg-[#dcfce7] text-[#15803d]\">
+                    已成交
+                  </span>
+</td>
+<td class=\"py-3.5 px-4\">
+<!-- 法务合同初审中 (天蓝 Chip 带圆点) -->
+<span class=\"inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-caption font-medium bg-[#e0f2fe] text-[#0369a1] border border-[#bae6fd]\">
+<span class=\"w-1.5 h-1.5 rounded-full bg-[#0284c7]\"></span>
+                    法务合同初审中
+                  </span>
+</td>
+<td class=\"py-3.5 px-4 text-on-surface-variant\">
+<div class=\"inline-flex items-center gap-1\">
+<span class=\"material-symbols-outlined text-[16px]\" data-icon=\"event\">event</span>
+<span>2025-06-13</span>
+</div>
+</td>
+<td class=\"py-3.5 px-4 text-right font-semibold text-on-surface font-mono\">
+                  ¥386,500
+                </td>
+<td class=\"py-3.5 px-4 text-center\">
+<div class=\"inline-flex items-center justify-center gap-1 text-label-sm font-label-sm\">
+<button class=\"px-2 py-1 text-secondary hover:bg-surface-container-high rounded transition-colors font-medium\">查看合同</button>
+<button class=\"px-2 py-1 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high rounded transition-colors\">详情</button>
+<button class=\"p-1 text-on-surface-variant hover:text-on-surface rounded\" title=\"更多\">
+<span class=\"material-symbols-outlined text-[16px]\" data-icon=\"more_horiz\">more_horiz</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4: 宏图供应链协同SaaS -->
+<tr class=\"hover:bg-surface-container-low transition-colors group\">
+<td class=\"py-3.5 px-4 text-center\">
+<input class=\"rounded w-4 h-4 text-primary border-outline focus:ring-0\" type=\"checkbox\"/>
+</td>
+<td class=\"py-3.5 px-4 font-medium text-on-surface\">
+<div class=\"flex items-center gap-2\">
+<span class=\"w-2 h-2 rounded-full bg-primary flex-shrink-0\"></span>
+<a class=\"hover:text-primary transition-colors hover:underline\" href=\"#\">宏图供应链协同SaaS</a>
+</div>
+<span class=\"text-caption font-caption text-on-surface-variant block pl-4\">PRJ-2025-044</span>
+</td>
+<td class=\"py-3.5 px-4 text-on-surface\">
+<div class=\"font-medium\">宏图物流</div>
+<div class=\"text-caption font-caption text-on-surface-variant\">王总监 (供应链枢纽)</div>
+</td>
+<td class=\"py-3.5 px-4\">
+<!-- 方案报价 (浅蓝 Chip) -->
+<span class=\"inline-flex items-center px-2 py-0.5 rounded text-caption font-medium bg-secondary-fixed text-on-secondary-fixed-variant\">
+                    方案报价
+                  </span>
+</td>
+<td class=\"py-3.5 px-4\">
+<!-- 跟进中 (浅黄 Chip) -->
+<span class=\"inline-flex items-center px-2 py-0.5 rounded text-caption font-medium bg-[#fef3c7] text-[#92400e]\">
+                    跟进中
+                  </span>
+</td>
+<td class=\"py-3.5 px-4\">
+<!-- 比选评审中 (琥珀色 Chip) -->
+<span class=\"inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-caption font-medium bg-[#fff7ed] text-[#c2410c] border border-[#ffedd5]\">
+<span class=\"w-1.5 h-1.5 rounded-full bg-[#ea580c]\"></span>
+                    比选评审中
+                  </span>
+</td>
+<td class=\"py-3.5 px-4 text-on-surface-variant\">
+<div class=\"inline-flex items-center gap-1\">
+<span class=\"material-symbols-outlined text-[16px]\" data-icon=\"event\">event</span>
+<span>2025-06-15</span>
+</div>
+</td>
+<td class=\"py-3.5 px-4 text-right font-semibold text-on-surface font-mono\">
+                  ¥195,000
+                </td>
+<td class=\"py-3.5 px-4 text-center\">
+<div class=\"inline-flex items-center justify-center gap-1 text-label-sm font-label-sm\">
+<button class=\"px-2 py-1 text-primary hover:bg-surface-container-high rounded transition-colors font-medium\">跟进</button>
+<button class=\"px-2 py-1 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high rounded transition-colors\">详情</button>
+<button class=\"p-1 text-on-surface-variant hover:text-on-surface rounded\" title=\"更多\">
+<span class=\"material-symbols-outlined text-[16px]\" data-icon=\"more_horiz\">more_horiz</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer / Pagination -->
+<div class=\"flex flex-col sm:flex-row items-center justify-between px-4 py-3 bg-surface-container-lowest border-t border-outline-variant gap-3\">
+<div class=\"text-caption font-caption text-on-surface-variant\">
+            显示 <span class=\"font-medium text-on-surface\">1</span> 至 <span class=\"font-medium text-on-surface\">4</span> 条结果，共 <span class=\"font-medium text-on-surface\">28</span> 个项目
+          </div>
+<!-- Pagination cluster -->
+<div class=\"flex items-center gap-2\">
+<!-- Items per page selector -->
+<div class=\"relative inline-block text-caption font-caption mr-2\">
+<select class=\"h-8 pl-2 pr-6 text-label-sm font-label-sm rounded border border-outline-variant bg-surface-container-lowest text-on-surface appearance-none focus:outline-none focus:border-primary\">
+<option value=\"10\">10 条/页</option>
+<option value=\"20\">20 条/页</option>
+<option value=\"50\">50 条/页</option>
+</select>
+<span class=\"material-symbols-outlined absolute right-1.5 top-2 text-[14px] text-on-surface-variant pointer-events-none\" data-icon=\"expand_more\">expand_more</span>
+</div>
+<!-- Previous page -->
+<button class=\"w-8 h-8 flex items-center justify-center rounded border border-outline-variant text-on-surface-variant hover:bg-surface-container-low disabled:opacity-40 disabled:cursor-not-allowed transition-colors\" disabled=\"\" title=\"上一页\">
+<span class=\"material-symbols-outlined text-[18px]\" data-icon=\"chevron_left\">chevron_left</span>
+</button>
+<!-- Page 1 (Active) -->
+<button class=\"w-8 h-8 flex items-center justify-center rounded bg-primary text-on-primary text-label-sm font-label-sm font-semibold shadow-sm\">
+              1
+            </button>
+<!-- Page 2 -->
+<button class=\"w-8 h-8 flex items-center justify-center rounded border border-outline-variant text-on-surface text-label-sm font-label-sm hover:bg-surface-container-low transition-colors\">
+              2
+            </button>
+<!-- Page 3 -->
+<button class=\"w-8 h-8 flex items-center justify-center rounded border border-outline-variant text-on-surface text-label-sm font-label-sm hover:bg-surface-container-low transition-colors\">
+              3
+            </button>
+<span class=\"text-outline-variant px-1 text-caption\">...</span>
+<!-- Next page -->
+<button class=\"w-8 h-8 flex items-center justify-center rounded border border-outline-variant text-on-surface-variant hover:bg-surface-container-low transition-colors\" title=\"下一页\">
+<span class=\"material-symbols-outlined text-[18px]\" data-icon=\"chevron_right\">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Quick KPI Bottom Summary Cards (Bento style) -->
+<div class=\"grid grid-cols-1 md:grid-cols-4 gap-4 pt-1\">
+<div class=\"bg-surface-container-lowest border border-outline-variant rounded-xl p-4 shadow-sm\">
+<div class=\"text-caption font-caption text-on-surface-variant mb-1\">本季度商机储备总额</div>
+<div class=\"text-headline-md font-headline-md text-on-surface font-semibold font-mono\">¥2,840,000</div>
+<div class=\"mt-2 text-caption font-caption text-[#15803d] flex items-center gap-1\">
+<span class=\"material-symbols-outlined text-[14px]\" data-icon=\"trending_up\">trending_up</span>
+<span>环比增长 +12.4%</span>
+</div>
+</div>
+<div class=\"bg-surface-container-lowest border border-outline-variant rounded-xl p-4 shadow-sm\">
+<div class=\"text-caption font-caption text-on-surface-variant mb-1\">成交转化率 (本月)</div>
+<div class=\"text-headline-md font-headline-md text-on-surface font-semibold font-mono\">38.2%</div>
+<div class=\"mt-2 text-caption font-caption text-on-surface-variant\">目标达成进度 85%</div>
+</div>
+<div class=\"bg-surface-container-lowest border border-outline-variant rounded-xl p-4 shadow-sm\">
+<div class=\"text-caption font-caption text-on-surface-variant mb-1\">平均交付周期</div>
+<div class=\"text-headline-md font-headline-md text-on-surface font-semibold font-mono\">24.5 天</div>
+<div class=\"mt-2 text-caption font-caption text-primary flex items-center gap-1\">
+<span class=\"material-symbols-outlined text-[14px]\" data-icon=\"check\">check</span>
+<span>优于基准 3.2 天</span>
+</div>
+</div>
+<div class=\"bg-surface-container-lowest border border-outline-variant rounded-xl p-4 shadow-sm\">
+<div class=\"text-caption font-caption text-on-surface-variant mb-1\">风险滞留项目</div>
+<div class=\"text-headline-md font-headline-md text-error font-semibold font-mono\">2 个</div>
+<div class=\"mt-2 text-caption font-caption text-error flex items-center gap-1\">
+<span class=\"material-symbols-outlined text-[14px]\" data-icon=\"error\">error</span>
+<span>需运营经理介入</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>"}
+
+Structured content:
+{"html":"<!DOCTYPE html>
+
+<html class=\"h-full bg-background\" lang=\"zh-CN\"><head>
+<meta charset=\"utf-8\"/>
+<meta content=\"width=device-width, initial-scale=1.0\" name=\"viewport\"/>
+<title>凯俊后台 - 项目管理</title>
+<!-- Material Symbols Outlined -->
+<link href=\"https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap\" rel=\"stylesheet\"/>
+<link href=\"https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap\" rel=\"stylesheet\"/>
+<link href=\"https://fonts.googleapis.com/css2?family=Inter,+-apple-system,+BlinkMacSystemFont,+'PingFang+SC',+'Microsoft+YaHei',+sans-serif:wght@100..900&display=swap\" rel=\"stylesheet\"/>
+<!-- Tailwind CSS CDN -->
+<script src=\"https://cdn.tailwindcss.com?plugins=forms,container-queries\"></script>
+<script id=\"tailwind-config\">
+    tailwind.config = {
+      darkMode: \"class\",
+      theme: {
+        extend: {
+          \"colors\": {
+            \"on-primary\": \"#ffffff\",
+            \"error\": \"#ba1a1a\",
+            \"tertiary\": \"#46566c\",
+            \"tertiary-fixed-dim\": \"#b7c8e1\",
+            \"on-primary-fixed\": \"#00174b\",
+            \"on-error\": \"#ffffff\",
+            \"primary\": \"#004ac6\",
+            \"on-secondary-fixed-variant\": \"#004c6e\",
+            \"surface-container-low\": \"#f2f4f6\",
+            \"surface-bright\": \"#f7f9fb\",
+            \"on-tertiary-fixed-variant\": \"#38485d\",
+            \"on-error-container\": \"#93000a\",
+            \"surface-tint\": \"#0053db\",
+            \"outline\": \"#737686\",
+            \"on-background\": \"#191c1e\",
+            \"tertiary-fixed\": \"#d3e4fe\",
+            \"secondary-fixed\": \"#c9e6ff\",
+            \"inverse-on-surface\": \"#eff1f3\",
+            \"surface-container-high\": \"#e6e8ea\",
+            \"secondary\": \"#006591\",
+            \"tertiary-container\": \"#5e6e85\",
+            \"surface-container-highest\": \"#e0e3e5\",
+            \"surface\": \"#f7f9fb\",
+            \"primary-container\": \"#2563eb\",
+            \"secondary-fixed-dim\": \"#89ceff\",
+            \"on-secondary-container\": \"#004666\",
+            \"on-secondary-fixed\": \"#001e2f\",
+            \"surface-container-lowest\": \"#ffffff\",
+            \"on-secondary\": \"#ffffff\",
+            \"surface-dim\": \"#d8dadc\",
+            \"secondary-container\": \"#39b8fd\",
+            \"on-primary-fixed-variant\": \"#003ea8\",
+            \"on-primary-container\": \"#eeefff\",
+            \"on-surface-variant\": \"#434655\",
+            \"on-tertiary\": \"#ffffff\",
+            \"surface-variant\": \"#e0e3e5\",
+            \"on-surface\": \"#191c1e\",
+            \"inverse-primary\": \"#b4c5ff\",
+            \"background\": \"#f7f9fb\",
+            \"on-tertiary-container\": \"#e9f0ff\",
+            \"inverse-surface\": \"#2d3133\",
+            \"primary-fixed\": \"#dbe1ff\",
+            \"on-tertiary-fixed\": \"#0b1c30\",
+            \"surface-container\": \"#eceef0\",
+            \"primary-fixed-dim\": \"#b4c5ff\",
+            \"outline-variant\": \"#c3c6d7\",
+            \"error-container\": \"#ffdad6\"
+          },
+          \"borderRadius\": {
+            \"DEFAULT\": \"0.125rem\",
+            \"lg\": \"0.25rem\",
+            \"xl\": \"0.5rem\",
+            \"full\": \"0.75rem\"
+          },
+          \"spacing\": {
+            \"margin-compact\": \"1rem\",
+            \"gutter-compact\": \"0.75rem\",
+            \"gutter\": \"1rem\",
+            \"space-md\": \"0.75rem\",
+            \"space-xs\": \"0.25rem\",
+            \"space-sm\": \"0.5rem\",
+            \"margin\": \"1.5rem\",
+            \"space-xl\": \"2rem\",
+            \"space-lg\": \"1.25rem\"
+          },
+          \"fontFamily\": {
+            \"headline-lg\": [\"Inter, -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif\"],
+            \"label-sm\": [\"Inter, -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif\"],
+            \"body-sm\": [\"Inter, -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif\"],
+            \"label-md\": [\"Inter, -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif\"],
+            \"headline-sm\": [\"Inter, -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif\"],
+            \"body-md\": [\"Inter, -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif\"],
+            \"headline-xl\": [\"Inter, -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif\"],
+            \"caption\": [\"Inter, -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif\"],
+            \"body-lg\": [\"Inter, -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif\"],
+            \"headline-md\": [\"Inter, -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif\"]
+          },
+          \"fontSize\": {
+            \"headline-lg\": [\"22px\", { \"lineHeight\": \"30px\", \"fontWeight\": \"600\" }],
+            \"label-sm\": [\"12px\", { \"lineHeight\": \"16px\", \"fontWeight\": \"500\" }],
+            \"body-sm\": [\"13px\", { \"lineHeight\": \"18px\", \"fontWeight\": \"400\" }],
+            \"label-md\": [\"13px\", { \"lineHeight\": \"18px\", \"fontWeight\": \"500\" }],
+            \"headline-sm\": [\"16px\", { \"lineHeight\": \"24px\", \"fontWeight\": \"600\" }],
+            \"body-md\": [\"14px\", { \"lineHeight\": \"22px\", \"fontWeight\": \"400\" }],
+            \"headline-xl\": [\"28px\", { \"lineHeight\": \"36px\", \"fontWeight\": \"600\" }],
+            \"caption\": [\"11px\", { \"lineHeight\": \"14px\", \"fontWeight\": \"400\" }],
+            \"body-lg\": [\"16px\", { \"lineHeight\": \"24px\", \"fontWeight\": \"400\" }],
+            \"headline-md\": [\"18px\", { \"lineHeight\": \"26px\", \"fontWeight\": \"600\" }]
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class=\"h-full bg-background font-body-md text-on-surface antialiased overflow-x-hidden\">
+<!-- ==================== SideNavBar ==================== -->
+<aside class=\"fixed top-0 left-0 h-screen w-60 z-30 bg-surface-container-lowest border-r border-outline-variant shadow-sm flex flex-col justify-between p-4 transition-all duration-150 ease-in-out\">
+<!-- Brand Header -->
+<div>
+<div class=\"flex items-center gap-3 px-2 py-2 mb-6\">
+<div class=\"w-9 h-9 rounded-xl bg-primary flex items-center justify-center text-on-primary shadow-sm flex-shrink-0\">
+<span class=\"material-symbols-outlined text-[20px]\" data-icon=\"corporate_fare\">corporate_fare</span>
+</div>
+<div class=\"flex flex-col min-w-0\">
+<span class=\"text-headline-md font-headline-md font-bold text-on-surface truncate\">凯俊后台</span>
+<span class=\"text-caption font-caption text-on-surface-variant truncate\">企业管理协同系统</span>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class=\"space-y-1\">
+<!-- 1. 总览 (Inactive) -->
+<a class=\"flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant font-normal hover:bg-surface-container-high hover:text-on-surface transition-colors\" href=\"#\">
+<span class=\"material-symbols-outlined text-[20px]\" data-icon=\"dashboard\">dashboard</span>
+<span class=\"text-label-md font-label-md\">总览</span>
+</a>
+<!-- 2. 项目 (Active - matched by page intent) -->
+<a class=\"flex items-center gap-3 px-3 py-2 rounded-lg bg-surface-container-low text-primary font-medium hover:bg-surface-container-high transition-colors\" href=\"#\">
+<span class=\"material-symbols-outlined text-[20px] text-primary\" data-icon=\"folder\" data-weight=\"fill\" style=\"font-variation-settings: 'FILL' 1;\">folder</span>
+<span class=\"text-label-md font-label-md\">项目</span>
+<span class=\"ml-auto text-caption font-caption px-1.5 py-0.5 rounded-full bg-primary-fixed text-primary font-semibold\">28</span>
+</a>
+<!-- 3. 任务 (Inactive) -->
+<a class=\"flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant font-normal hover:bg-surface-container-high hover:text-on-surface transition-colors\" href=\"#\">
+<span class=\"material-symbols-outlined text-[20px]\" data-icon=\"check_circle\">check_circle</span>
+<span class=\"text-label-md font-label-md\">任务</span>
+</a>
+<!-- 4. 工时 (Inactive) -->
+<a class=\"flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant font-normal hover:bg-surface-container-high hover:text-on-surface transition-colors\" href=\"#\">
+<span class=\"material-symbols-outlined text-[20px]\" data-icon=\"schedule\">schedule</span>
+<span class=\"text-label-md font-label-md\">工时</span>
+</a>
+<!-- 5. 调研 (Inactive) -->
+<a class=\"flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant font-normal hover:bg-surface-container-high hover:text-on-surface transition-colors\" href=\"#\">
+<span class=\"material-symbols-outlined text-[20px]\" data-icon=\"poll\">poll</span>
+<span class=\"text-label-md font-label-md\">调研</span>
+</a>
+<!-- 6. 话术 (Inactive) -->
+<a class=\"flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant font-normal hover:bg-surface-container-high hover:text-on-surface transition-colors\" href=\"#\">
+<span class=\"material-symbols-outlined text-[20px]\" data-icon=\"chat\">chat</span>
+<span class=\"text-label-md font-label-md\">话术</span>
+</a>
+<!-- 7. 设置 (Inactive) -->
+<a class=\"flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant font-normal hover:bg-surface-container-high hover:text-on-surface transition-colors\" href=\"#\">
+<span class=\"material-symbols-outlined text-[20px]\" data-icon=\"settings\">settings</span>
+<span class=\"text-label-md font-label-md\">设置</span>
+</a>
+</nav>
+</div>
+<!-- Sidebar Footer -->
+<div class=\"border-t border-outline-variant pt-3 space-y-2\">
+<!-- 帮助中心 -->
+<a class=\"flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant font-normal hover:bg-surface-container-high hover:text-on-surface transition-colors\" href=\"#\">
+<span class=\"material-symbols-outlined text-[20px]\" data-icon=\"help\">help</span>
+<span class=\"text-label-md font-label-md\">帮助中心</span>
+</a>
+<!-- 登录用户卡片 -->
+<div class=\"flex items-center justify-between px-2.5 py-2 rounded-xl bg-surface-bright border border-outline-variant\">
+<div class=\"flex items-center gap-2.5 min-w-0\">
+<img class=\"w-8 h-8 rounded-full object-cover flex-shrink-0 border border-outline-variant\" data-alt=\"Professional headshot of a smart Asian male corporate administrator wearing navy blazer in modern office space, soft studio light, clean background\" src=\"https://lh3.googleusercontent.com/aida-public/AB6AXuB2g8Pv2w65Zm4NeIa2WxkAdAm9IdU0rWgIgzaFhIG0yBlrSNqzx1YBhocgzSTwzfMgwHba1C_YkERBLpNVTCg3TFDM2cnD4QEoPS8TaD9bgI-vybQB-FSGOSRQGOcbfX1ZEC88JMriZqfSyjpP02XCwevePZGDCm4pkKCakaEDLspNSBdf-hX9NNJQpM5mzEODU4BFRQd28cVUbAxx9VYRsMlbnCT-4oG-g5BbLqvS_AeSTExs8XOqfvuw2pIKucjDuo413sUWU4ks\"/>
+<div class=\"flex flex-col min-w-0\">
+<span class=\"text-label-md font-label-md text-on-surface truncate\">周凯</span>
+<span class=\"text-caption font-caption text-on-surface-variant truncate\">系统管理员</span>
+</div>
+</div>
+<button class=\"p-1 rounded text-on-surface-variant hover:text-error hover:bg-error-container transition-colors\" title=\"退出登录\">
+<span class=\"material-symbols-outlined text-[18px]\" data-icon=\"logout\">logout</span>
+</button>
+</div>
+</div>
+</aside>
+<!-- ==================== TopNavBar ==================== -->
+<header class=\"sticky top-0 right-0 z-20 h-14 w-full pl-60 bg-surface-container-lowest border-b border-outline-variant shadow-sm transition-all duration-150 ease-in-out\">
+<div class=\"flex items-center justify-between px-6 h-full w-full\">
+<!-- Left: Breadcrumb -->
+<nav aria-label=\"Breadcrumb\" class=\"flex items-center gap-2 text-label-md font-label-md\">
+<span class=\"text-on-surface-variant\">凯俊协同</span>
+<span class=\"text-outline-variant\">/</span>
+<span class=\"text-on-surface font-semibold\">项目管理</span>
+</nav>
+<!-- Right: Action clusters -->
+<div class=\"flex items-center gap-3\">
+<!-- Quick search launcher (compact) -->
+<div class=\"relative hidden lg:block\">
+<span class=\"material-symbols-outlined absolute left-2.5 top-2 text-[18px] text-on-surface-variant\" data-icon=\"search\">search</span>
+<input class=\"h-8 pl-8 pr-3 w-48 text-body-sm font-body-sm rounded-lg border border-outline-variant bg-surface focus:outline-none focus:border-primary-container focus:bg-surface-container-lowest text-on-surface\" placeholder=\"全域快捷检索...\" type=\"text\"/>
+</div>
+<!-- Documentation button -->
+<a class=\"h-8 px-2.5 py-1 inline-flex items-center gap-1.5 text-label-md font-label-md text-on-surface-variant hover:text-primary hover:bg-surface-container-low rounded-lg transition-colors\" href=\"#\">
+<span class=\"material-symbols-outlined text-[18px]\" data-icon=\"help_outline\">help_outline</span>
+<span>文档中心</span>
+</a>
+<!-- Notification Bell with Dot -->
+<button class=\"relative p-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors\" title=\"系统通知\">
+<span class=\"material-symbols-outlined text-[20px]\" data-icon=\"notifications\">notifications</span>
+<span class=\"absolute top-1 right-1 w-2 h-2 rounded-full bg-error ring-2 ring-surface-container-lowest\"></span>
+</button>
+<div class=\"h-4 w-px bg-outline-variant mx-1\"></div>
+<!-- Trailing Primary Action from Spec -->
+<button class=\"h-8 px-3 inline-flex items-center gap-1 bg-primary text-on-primary rounded-lg text-label-md font-label-md hover:bg-surface-tint active:bg-on-primary-fixed-variant transition-colors shadow-sm\">
+<span class=\"material-symbols-outlined text-[18px]\" data-icon=\"add\">add</span>
+<span>新建任务</span>
+</button>
+<!-- Small User Avatar -->
+<img class=\"w-7 h-7 rounded-full object-cover border border-outline-variant ml-1\" data-alt=\"Subtle rounded administrator profile icon portrait with neutral lighting, professional corporate avatar\" src=\"https://lh3.googleusercontent.com/aida-public/AB6AXuDEXRqweTrhWUv3q8xMrpsXbT7HE_VXnLB4Okd7npZF4hb0t5Tik-MbM-PzbulU7UTmJ9x7syJQIZeozWmXGeGp28irHWH7WJNfCa24n5UsyLaULpnSQRqypHGoKmjD6dZgUYsnUyvWGIpClTpfvxcshNpywGfyUnl9QyeDrEwiAMczEwZoUkLib54oemq-JbTm1niwl5FZK8_M9Ye8KCOahRKjMFjumz9lfDVYdQyTYtCvNQlCGgBWdBtraXtB5n0xjL4PB_o6fcZk\"/>
+</div>
+</div>
+</header>
+<!-- ==================== Main Workbench Canvas ==================== -->
+<main class=\"pl-60 min-h-[calc(100vh-3.5rem)] bg-background\">
+<div class=\"p-6 max-w-7xl mx-auto space-y-5\">
+<!-- Page Header Banner / Statistics -->
+<section class=\"flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-1\">
+<div>
+<div class=\"flex items-center gap-3\">
+<h1 class=\"text-headline-xl font-headline-xl text-on-surface\">项目</h1>
+<span class=\"inline-flex items-center px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-primary-fixed text-primary font-semibold\">协同交付中心</span>
+</div>
+<p class=\"text-body-md font-body-md text-on-surface-variant mt-1\">
+            共 <span class=\"font-semibold text-on-surface\">28</span> 个进行中项目，<span class=\"font-semibold text-error\">4</span> 项需本周重点跟进，阶段转化率良好。
+          </p>
+</div>
+<!-- Primary Actions Area -->
+<div class=\"flex items-center gap-2.5\">
+<button class=\"h-9 px-3.5 inline-flex items-center gap-1.5 bg-surface-container-lowest border border-outline-variant text-on-surface text-label-md font-label-md rounded-lg hover:bg-surface-container-low transition-colors shadow-sm\">
+<span class=\"material-symbols-outlined text-[18px] text-on-surface-variant\" data-icon=\"download\">download</span>
+<span>导出报表</span>
+</button>
+<button class=\"h-9 px-3.5 inline-flex items-center gap-1.5 bg-surface-container-lowest border border-outline-variant text-on-surface text-label-md font-label-md rounded-lg hover:bg-surface-container-low transition-colors shadow-sm\">
+<span class=\"material-symbols-outlined text-[18px] text-on-surface-variant\" data-icon=\"checklist\">checklist</span>
+<span>批量操作</span>
+</button>
+<button class=\"h-9 px-4 inline-flex items-center gap-1.5 bg-primary-container text-on-primary text-label-md font-label-md rounded-lg hover:bg-primary transition-colors shadow-sm focus:ring-2 focus:ring-secondary-fixed\">
+<span class=\"material-symbols-outlined text-[18px]\" data-icon=\"add\">add</span>
+<span>新建项目</span>
+</button>
+</div>
+</section>
+<!-- Filter & Search Toolbar (Bento Panel) -->
+<div class=\"bg-surface-container-lowest border border-outline-variant rounded-xl p-4 shadow-sm\">
+<div class=\"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-3 items-center\">
+<!-- Search input (Span 4) -->
+<div class=\"lg:col-span-4 relative\">
+<span class=\"material-symbols-outlined absolute left-3 top-2.5 text-[18px] text-on-surface-variant\" data-icon=\"search\">search</span>
+<input class=\"w-full h-9 pl-9 pr-3 rounded-lg border border-outline-variant bg-surface-container-lowest text-body-sm font-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:border-primary-container focus:ring-2 focus:ring-primary-fixed\" placeholder=\"搜索项目名称、客户或负责人...\" type=\"text\"/>
+</div>
+<!-- Status Select (Span 2) -->
+<div class=\"lg:col-span-2\">
+<div class=\"relative\">
+<select class=\"w-full h-9 pl-3 pr-8 rounded-lg border border-outline-variant bg-surface-container-lowest text-body-sm font-body-sm text-on-surface focus:outline-none focus:border-primary-container appearance-none cursor-pointer\">
+<option value=\"\">全部状态</option>
+<option value=\"wait_reply\">待客户回复</option>
+<option value=\"following\">跟进中</option>
+<option value=\"wait_material\">待补材料</option>
+<option value=\"contract_review\">法务合同初审中</option>
+</select>
+<span class=\"material-symbols-outlined absolute right-2.5 top-2.5 text-[18px] text-on-surface-variant pointer-events-none\" data-icon=\"expand_more\">expand_more</span>
+</div>
+</div>
+<!-- Stage Select (Span 2) -->
+<div class=\"lg:col-span-2\">
+<div class=\"relative\">
+<select class=\"w-full h-9 pl-3 pr-8 rounded-lg border border-outline-variant bg-surface-container-lowest text-body-sm font-body-sm text-on-surface focus:outline-none focus:border-primary-container appearance-none cursor-pointer\">
+<option value=\"\">全部阶段</option>
+<option value=\"intent\">意向阶段</option>
+<option value=\"requirement\">需求沟通</option>
+<option value=\"quote\">方案报价</option>
+<option value=\"negotiate\">商务谈判</option>
+</select>
+<span class=\"material-symbols-outlined absolute right-2.5 top-2.5 text-[18px] text-on-surface-variant pointer-events-none\" data-icon=\"expand_more\">expand_more</span>
+</div>
+</div>
+<!-- Won/Loss Select (Span 2) -->
+<div class=\"lg:col-span-2\">
+<div class=\"relative\">
+<select class=\"w-full h-9 pl-3 pr-8 rounded-lg border border-outline-variant bg-surface-container-lowest text-body-sm font-body-sm text-on-surface focus:outline-none focus:border-primary-container appearance-none cursor-pointer\">
+<option value=\"\">成交状态</option>
+<option value=\"won\">已成交</option>
+<option value=\"lost\">未成交</option>
+<option value=\"pending\">跟进中</option>
+</select>
+<span class=\"material-symbols-outlined absolute right-2.5 top-2.5 text-[18px] text-on-surface-variant pointer-events-none\" data-icon=\"expand_more\">expand_more</span>
+</div>
+</div>
+<!-- Filter Confirmation & Reset (Span 2) -->
+<div class=\"lg:col-span-2 flex items-center justify-end gap-2\">
+<button class=\"h-9 px-3 text-label-md font-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded-lg transition-colors\">
+              重置
+            </button>
+<button class=\"h-9 px-3.5 bg-primary text-on-primary text-label-md font-label-md rounded-lg hover:bg-surface-tint transition-colors shadow-sm\">
+              查询
+            </button>
+</div>
+</div>
+<!-- Filter Sub-bar: Quick Tag toggles -->
+<div class=\"mt-3 pt-3 border-t border-outline-variant flex flex-wrap items-center justify-between gap-2 text-label-sm font-label-sm\">
+<div class=\"flex items-center gap-3\">
+<span class=\"text-on-surface-variant\">快速过滤:</span>
+<!-- Toggle: 今日待跟进 (Active style) -->
+<label class=\"inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary-fixed border border-primary text-primary cursor-pointer hover:bg-primary-container hover:text-on-primary transition-colors\">
+<input checked=\"\" class=\"rounded w-3.5 h-3.5 text-primary focus:ring-0 focus:ring-offset-0 border-outline\" type=\"checkbox\"/>
+<span class=\"font-medium\">今日待跟进 (4)</span>
+</label>
+<!-- Toggle: 重点高额项目 -->
+<label class=\"inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-low border border-outline-variant text-on-surface-variant cursor-pointer hover:bg-surface-container-high transition-colors\">
+<input class=\"rounded w-3.5 h-3.5 text-primary focus:ring-0 focus:ring-offset-0 border-outline\" type=\"checkbox\"/>
+<span>预估 > ¥20万</span>
+</label>
+<!-- Toggle: 近7天超期 -->
+<label class=\"inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-low border border-outline-variant text-on-surface-variant cursor-pointer hover:bg-surface-container-high transition-colors\">
+<input class=\"rounded w-3.5 h-3.5 text-primary focus:ring-0 focus:ring-offset-0 border-outline\" type=\"checkbox\"/>
+<span>超期滞留 (2)</span>
+</label>
+</div>
+<div class=\"text-caption font-caption text-on-surface-variant\">
+            已应用 <span class=\"font-semibold text-primary\">1</span> 个快捷过滤规则
+          </div>
+</div>
+</div>
+<!-- Main Data Table Card -->
+<div class=\"bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm overflow-hidden\">
+<div class=\"overflow-x-auto\">
+<table class=\"w-full text-left border-collapse\">
+<!-- Table Header -->
+<thead>
+<tr class=\"bg-surface-container-low border-b border-outline-variant text-label-sm font-label-sm text-on-surface-variant\">
+<th class=\"py-3 px-4 w-12 text-center\">
+<input class=\"rounded w-4 h-4 text-primary border-outline focus:ring-0 focus:ring-offset-0\" type=\"checkbox\"/>
+</th>
+<th class=\"py-3 px-4 font-medium\">项目名称</th>
+<th class=\"py-3 px-4 font-medium\">客户公司 / 联系人</th>
+<th class=\"py-3 px-4 font-medium\">阶段</th>
+<th class=\"py-3 px-4 font-medium\">是否成交</th>
+<th class=\"py-3 px-4 font-medium\">当前状态</th>
+<th class=\"py-3 px-4 font-medium\">下次跟进日</th>
+<th class=\"py-3 px-4 text-right font-medium\">预计金额</th>
+<th class=\"py-3 px-4 text-center font-medium w-36\">操作</th>
+</tr>
+</thead>
+<!-- Table Body -->
+<tbody class=\"divide-y divide-outline-variant text-body-sm font-body-sm\">
+<!-- Row 1: 星河CRM二期升级 -->
+<tr class=\"hover:bg-surface-container-low transition-colors group\">
+<td class=\"py-3.5 px-4 text-center\">
+<input class=\"rounded w-4 h-4 text-primary border-outline focus:ring-0\" type=\"checkbox\"/>
+</td>
+<td class=\"py-3.5 px-4 font-medium text-on-surface\">
+<div class=\"flex items-center gap-2\">
+<span class=\"w-2 h-2 rounded-full bg-primary-container flex-shrink-0\"></span>
+<a class=\"hover:text-primary transition-colors hover:underline\" href=\"#\">星河CRM二期升级</a>
+</div>
+<span class=\"text-caption font-caption text-on-surface-variant block pl-4\">PRJ-2025-089</span>
+</td>
+<td class=\"py-3.5 px-4 text-on-surface\">
+<div class=\"font-medium\">星河科技</div>
+<div class=\"text-caption font-caption text-on-surface-variant\">李工 (研发负责人)</div>
+</td>
+<td class=\"py-3.5 px-4\">
+<!-- 方案报价 (浅蓝 Chip) -->
+<span class=\"inline-flex items-center px-2 py-0.5 rounded text-caption font-medium bg-secondary-fixed text-on-secondary-fixed-variant\">
+                    方案报价
+                  </span>
+</td>
+<td class=\"py-3.5 px-4\">
+<!-- 跟进中 (浅黄/中性 Chip) -->
+<span class=\"inline-flex items-center px-2 py-0.5 rounded text-caption font-medium bg-[#fef3c7] text-[#92400e]\">
+                    跟进中
+                  </span>
+</td>
+<td class=\"py-3.5 px-4\">
+<!-- 待客户回复 (黄色/橙色 Chip 带圆点) -->
+<span class=\"inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-caption font-medium bg-[#fffbeb] text-[#b45309] border border-[#fde68a]\">
+<span class=\"w-1.5 h-1.5 rounded-full bg-[#f59e0b]\"></span>
+                    待客户回复
+                  </span>
+</td>
+<td class=\"py-3.5 px-4\">
+<div class=\"inline-flex items-center gap-1 text-primary font-medium\">
+<span class=\"material-symbols-outlined text-[16px]\" data-icon=\"event\">event</span>
+<span>2025-06-12</span>
+<span class=\"px-1 rounded text-caption bg-primary-fixed text-primary font-bold\">今日</span>
+</div>
+</td>
+<td class=\"py-3.5 px-4 text-right font-semibold text-on-surface font-mono\">
+                  ¥128,000
+                </td>
+<td class=\"py-3.5 px-4 text-center\">
+<div class=\"inline-flex items-center justify-center gap-1 text-label-sm font-label-sm\">
+<button class=\"px-2 py-1 text-primary hover:bg-surface-container-high rounded transition-colors font-medium\">跟进</button>
+<button class=\"px-2 py-1 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high rounded transition-colors\">详情</button>
+<button class=\"p-1 text-on-surface-variant hover:text-on-surface rounded\" title=\"更多\">
+<span class=\"material-symbols-outlined text-[16px]\" data-icon=\"more_horiz\">more_horiz</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2: 智汇云工业互联系统 -->
+<tr class=\"hover:bg-surface-container-low transition-colors group\">
+<td class=\"py-3.5 px-4 text-center\">
+<input class=\"rounded w-4 h-4 text-primary border-outline focus:ring-0\" type=\"checkbox\"/>
+</td>
+<td class=\"py-3.5 px-4 font-medium text-on-surface\">
+<div class=\"flex items-center gap-2\">
+<span class=\"w-2 h-2 rounded-full bg-error flex-shrink-0\"></span>
+<a class=\"hover:text-primary transition-colors hover:underline\" href=\"#\">智汇云工业互联系统</a>
+</div>
+<span class=\"text-caption font-caption text-on-surface-variant block pl-4\">PRJ-2025-067</span>
+</td>
+<td class=\"py-3.5 px-4 text-on-surface\">
+<div class=\"font-medium\">智汇互联</div>
+<div class=\"text-caption font-caption text-on-surface-variant\">赵总监 (生产部)</div>
+</td>
+<td class=\"py-3.5 px-4\">
+<!-- 需求沟通 (紫蓝 Chip) -->
+<span class=\"inline-flex items-center px-2 py-0.5 rounded text-caption font-medium bg-tertiary-fixed text-on-tertiary-fixed-variant\">
+                    需求沟通
+                  </span>
+</td>
+<td class=\"py-3.5 px-4\">
+<!-- 未成交 (灰色 Chip) -->
+<span class=\"inline-flex items-center px-2 py-0.5 rounded text-caption font-medium bg-surface-container-high text-on-surface-variant\">
+                    未成交
+                  </span>
+</td>
+<td class=\"py-3.5 px-4\">
+<!-- 待补技术白皮书 (红色/警示 Chip 带圆点) -->
+<span class=\"inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-caption font-medium bg-[#fef2f2] text-[#b91c1c] border border-[#fecaca]\">
+<span class=\"w-1.5 h-1.5 rounded-full bg-[#dc2626]\"></span>
+                    待补技术白皮书
+                  </span>
+</td>
+<td class=\"py-3.5 px-4\">
+<div class=\"inline-flex items-center gap-1 text-error font-medium\">
+<span class=\"material-symbols-outlined text-[16px]\" data-icon=\"warning\">warning</span>
+<span>2025-06-11</span>
+<span class=\"px-1 rounded text-caption bg-[#fee2e2] text-[#dc2626] font-medium\">逾期1天</span>
+</div>
+</td>
+<td class=\"py-3.5 px-4 text-right font-semibold text-on-surface font-mono\">
+                  ¥260,000
+                </td>
+<td class=\"py-3.5 px-4 text-center\">
+<div class=\"inline-flex items-center justify-center gap-1 text-label-sm font-label-sm\">
+<button class=\"px-2 py-1 text-primary hover:bg-surface-container-high rounded transition-colors font-medium\">跟进</button>
+<button class=\"px-2 py-1 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high rounded transition-colors\">详情</button>
+<button class=\"p-1 text-on-surface-variant hover:text-on-surface rounded\" title=\"更多\">
+<span class=\"material-symbols-outlined text-[16px]\" data-icon=\"more_horiz\">more_horiz</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3: 安泰智慧医疗挂号中台 -->
+<tr class=\"hover:bg-surface-container-low transition-colors group\">
+<td class=\"py-3.5 px-4 text-center\">
+<input class=\"rounded w-4 h-4 text-primary border-outline focus:ring-0\" type=\"checkbox\"/>
+</td>
+<td class=\"py-3.5 px-4 font-medium text-on-surface\">
+<div class=\"flex items-center gap-2\">
+<span class=\"w-2 h-2 rounded-full bg-[#16a34a] flex-shrink-0\"></span>
+<a class=\"hover:text-primary transition-colors hover:underline\" href=\"#\">安泰智慧医疗挂号中台</a>
+</div>
+<span class=\"text-caption font-caption text-on-surface-variant block pl-4\">PRJ-2025-052</span>
+</td>
+<td class=\"py-3.5 px-4 text-on-surface\">
+<div class=\"font-medium\">安泰医疗</div>
+<div class=\"text-caption font-caption text-on-surface-variant\">张经理 (信息中心)</div>
+</td>
+<td class=\"py-3.5 px-4\">
+<!-- 商务谈判 (靛蓝 Chip) -->
+<span class=\"inline-flex items-center px-2 py-0.5 rounded text-caption font-medium bg-[#e0e7ff] text-[#3730a3]\">
+                    商务谈判
+                  </span>
+</td>
+<td class=\"py-3.5 px-4\">
+<!-- 已成交 (浅绿高亮 Chip) -->
+<span class=\"inline-flex items-center px-2 py-0.5 rounded text-caption font-medium bg-[#dcfce7] text-[#15803d]\">
+                    已成交
+                  </span>
+</td>
+<td class=\"py-3.5 px-4\">
+<!-- 法务合同初审中 (天蓝 Chip 带圆点) -->
+<span class=\"inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-caption font-medium bg-[#e0f2fe] text-[#0369a1] border border-[#bae6fd]\">
+<span class=\"w-1.5 h-1.5 rounded-full bg-[#0284c7]\"></span>
+                    法务合同初审中
+                  </span>
+</td>
+<td class=\"py-3.5 px-4 text-on-surface-variant\">
+<div class=\"inline-flex items-center gap-1\">
+<span class=\"material-symbols-outlined text-[16px]\" data-icon=\"event\">event</span>
+<span>2025-06-13</span>
+</div>
+</td>
+<td class=\"py-3.5 px-4 text-right font-semibold text-on-surface font-mono\">
+                  ¥386,500
+                </td>
+<td class=\"py-3.5 px-4 text-center\">
+<div class=\"inline-flex items-center justify-center gap-1 text-label-sm font-label-sm\">
+<button class=\"px-2 py-1 text-secondary hover:bg-surface-container-high rounded transition-colors font-medium\">查看合同</button>
+<button class=\"px-2 py-1 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high rounded transition-colors\">详情</button>
+<button class=\"p-1 text-on-surface-variant hover:text-on-surface rounded\" title=\"更多\">
+<span class=\"material-symbols-outlined text-[16px]\" data-icon=\"more_horiz\">more_horiz</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4: 宏图供应链协同SaaS -->
+<tr class=\"hover:bg-surface-container-low transition-colors group\">
+<td class=\"py-3.5 px-4 text-center\">
+<input class=\"rounded w-4 h-4 text-primary border-outline focus:ring-0\" type=\"checkbox\"/>
+</td>
+<td class=\"py-3.5 px-4 font-medium text-on-surface\">
+<div class=\"flex items-center gap-2\">
+<span class=\"w-2 h-2 rounded-full bg-primary flex-shrink-0\"></span>
+<a class=\"hover:text-primary transition-colors hover:underline\" href=\"#\">宏图供应链协同SaaS</a>
+</div>
+<span class=\"text-caption font-caption text-on-surface-variant block pl-4\">PRJ-2025-044</span>
+</td>
+<td class=\"py-3.5 px-4 text-on-surface\">
+<div class=\"font-medium\">宏图物流</div>
+<div class=\"text-caption font-caption text-on-surface-variant\">王总监 (供应链枢纽)</div>
+</td>
+<td class=\"py-3.5 px-4\">
+<!-- 方案报价 (浅蓝 Chip) -->
+<span class=\"inline-flex items-center px-2 py-0.5 rounded text-caption font-medium bg-secondary-fixed text-on-secondary-fixed-variant\">
+                    方案报价
+                  </span>
+</td>
+<td class=\"py-3.5 px-4\">
+<!-- 跟进中 (浅黄 Chip) -->
+<span class=\"inline-flex items-center px-2 py-0.5 rounded text-caption font-medium bg-[#fef3c7] text-[#92400e]\">
+                    跟进中
+                  </span>
+</td>
+<td class=\"py-3.5 px-4\">
+<!-- 比选评审中 (琥珀色 Chip) -->
+<span class=\"inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-caption font-medium bg-[#fff7ed] text-[#c2410c] border border-[#ffedd5]\">
+<span class=\"w-1.5 h-1.5 rounded-full bg-[#ea580c]\"></span>
+                    比选评审中
+                  </span>
+</td>
+<td class=\"py-3.5 px-4 text-on-surface-variant\">
+<div class=\"inline-flex items-center gap-1\">
+<span class=\"material-symbols-outlined text-[16px]\" data-icon=\"event\">event</span>
+<span>2025-06-15</span>
+</div>
+</td>
+<td class=\"py-3.5 px-4 text-right font-semibold text-on-surface font-mono\">
+                  ¥195,000
+                </td>
+<td class=\"py-3.5 px-4 text-center\">
+<div class=\"inline-flex items-center justify-center gap-1 text-label-sm font-label-sm\">
+<button class=\"px-2 py-1 text-primary hover:bg-surface-container-high rounded transition-colors font-medium\">跟进</button>
+<button class=\"px-2 py-1 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high rounded transition-colors\">详情</button>
+<button class=\"p-1 text-on-surface-variant hover:text-on-surface rounded\" title=\"更多\">
+<span class=\"material-symbols-outlined text-[16px]\" data-icon=\"more_horiz\">more_horiz</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer / Pagination -->
+<div class=\"flex flex-col sm:flex-row items-center justify-between px-4 py-3 bg-surface-container-lowest border-t border-outline-variant gap-3\">
+<div class=\"text-caption font-caption text-on-surface-variant\">
+            显示 <span class=\"font-medium text-on-surface\">1</span> 至 <span class=\"font-medium text-on-surface\">4</span> 条结果，共 <span class=\"font-medium text-on-surface\">28</span> 个项目
+          </div>
+<!-- Pagination cluster -->
+<div class=\"flex items-center gap-2\">
+<!-- Items per page selector -->
+<div class=\"relative inline-block text-caption font-caption mr-2\">
+<select class=\"h-8 pl-2 pr-6 text-label-sm font-label-sm rounded border border-outline-variant bg-surface-container-lowest text-on-surface appearance-none focus:outline-none focus:border-primary\">
+<option value=\"10\">10 条/页</option>
+<option value=\"20\">20 条/页</option>
+<option value=\"50\">50 条/页</option>
+</select>
+<span class=\"material-symbols-outlined absolute right-1.5 top-2 text-[14px] text-on-surface-variant pointer-events-none\" data-icon=\"expand_more\">expand_more</span>
+</div>
+<!-- Previous page -->
+<button class=\"w-8 h-8 flex items-center justify-center rounded border border-outline-variant text-on-surface-variant hover:bg-surface-container-low disabled:opacity-40 disabled:cursor-not-allowed transition-colors\" disabled=\"\" title=\"上一页\">
+<span class=\"material-symbols-outlined text-[18px]\" data-icon=\"chevron_left\">chevron_left</span>
+</button>
+<!-- Page 1 (Active) -->
+<button class=\"w-8 h-8 flex items-center justify-center rounded bg-primary text-on-primary text-label-sm font-label-sm font-semibold shadow-sm\">
+              1
+            </button>
+<!-- Page 2 -->
+<button class=\"w-8 h-8 flex items-center justify-center rounded border border-outline-variant text-on-surface text-label-sm font-label-sm hover:bg-surface-container-low transition-colors\">
+              2
+            </button>
+<!-- Page 3 -->
+<button class=\"w-8 h-8 flex items-center justify-center rounded border border-outline-variant text-on-surface text-label-sm font-label-sm hover:bg-surface-container-low transition-colors\">
+              3
+            </button>
+<span class=\"text-outline-variant px-1 text-caption\">...</span>
+<!-- Next page -->
+<button class=\"w-8 h-8 flex items-center justify-center rounded border border-outline-variant text-on-surface-variant hover:bg-surface-container-low transition-colors\" title=\"下一页\">
+<span class=\"material-symbols-outlined text-[18px]\" data-icon=\"chevron_right\">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Quick KPI Bottom Summary Cards (Bento style) -->
+<div class=\"grid grid-cols-1 md:grid-cols-4 gap-4 pt-1\">
+<div class=\"bg-surface-container-lowest border border-outline-variant rounded-xl p-4 shadow-sm\">
+<div class=\"text-caption font-caption text-on-surface-variant mb-1\">本季度商机储备总额</div>
+<div class=\"text-headline-md font-headline-md text-on-surface font-semibold font-mono\">¥2,840,000</div>
+<div class=\"mt-2 text-caption font-caption text-[#15803d] flex items-center gap-1\">
+<span class=\"material-symbols-outlined text-[14px]\" data-icon=\"trending_up\">trending_up</span>
+<span>环比增长 +12.4%</span>
+</div>
+</div>
+<div class=\"bg-surface-container-lowest border border-outline-variant rounded-xl p-4 shadow-sm\">
+<div class=\"text-caption font-caption text-on-surface-variant mb-1\">成交转化率 (本月)</div>
+<div class=\"text-headline-md font-headline-md text-on-surface font-semibold font-mono\">38.2%</div>
+<div class=\"mt-2 text-caption font-caption text-on-surface-variant\">目标达成进度 85%</div>
+</div>
+<div class=\"bg-surface-container-lowest border border-outline-variant rounded-xl p-4 shadow-sm\">
+<div class=\"text-caption font-caption text-on-surface-variant mb-1\">平均交付周期</div>
+<div class=\"text-headline-md font-headline-md text-on-surface font-semibold font-mono\">24.5 天</div>
+<div class=\"mt-2 text-caption font-caption text-primary flex items-center gap-1\">
+<span class=\"material-symbols-outlined text-[14px]\" data-icon=\"check\">check</span>
+<span>优于基准 3.2 天</span>
+</div>
+</div>
+<div class=\"bg-surface-container-lowest border border-outline-variant rounded-xl p-4 shadow-sm\">
+<div class=\"text-caption font-caption text-on-surface-variant mb-1\">风险滞留项目</div>
+<div class=\"text-headline-md font-headline-md text-error font-semibold font-mono\">2 个</div>
+<div class=\"mt-2 text-caption font-caption text-error flex items-center gap-1\">
+<span class=\"material-symbols-outlined text-[14px]\" data-icon=\"error\">error</span>
+<span>需运营经理介入</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>
