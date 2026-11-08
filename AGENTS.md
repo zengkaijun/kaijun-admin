@@ -9,7 +9,7 @@
 - 编排：Docker Desktop + Compose（db / app / web）
 - 后端：PHP 8.4 + Laravel 12 API
 - 应用服务器：**Laravel Octane + Swoole**（`octane:start --server=swoole`；失败降级 `artisan serve` 仅限排障）
-- 数据库：MySQL 9（镜像不可用时 `mysql:lts`）
+- 数据库：MySQL 8.4（异常时改 `mysql:8.0`）；**不用 Redis**
 - 前端：Vite + React + Ant Design，经 Vite 代理访问 `/api`
 - 本地开发只绑定 127.0.0.1；代码经 GitHub 多机同步
 
@@ -29,10 +29,14 @@ docker compose logs app          # 确认 Octane/Swoole 已启动
 ```
 backend/        # Laravel API
 frontend/       # Vite React
-docs/           # PRD、技术方案、进度
+docs/           # PRD、技术方案、进度、文件地图、db-comments.sql
 docker-compose.yml
 .cursor/        # Cursor 规则
 ```
+
+## 页面 / 接口对应文件
+
+写改动范围前先查 **`docs/文件地图.md`**（浏览器地址 → 前端文件；接口 URL → 控制器）。小调整只改地图中点名的文件，禁止顺手重构无关文件。
 
 ## 代码约定
 
@@ -42,6 +46,7 @@ docker-compose.yml
 - 命名清晰优先于简短；只写「为什么」的注释
 - 不留调试残渣；错误不吞
 - 跟进历史只增不删；状态流转按技术方案状态机
+- **数据库注释**：新建/修改表时，迁移里必须用 `->comment('中文说明')` 标注表名与每个字段（Navicat/DBA 可读）；已有表补注释可另出一次性 SQL，不重跑业务迁移
 
 ## 禁止事项
 
